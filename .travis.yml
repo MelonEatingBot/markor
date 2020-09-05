@@ -51,6 +51,6 @@ env:
     - TASK="clean build check -x lint --stacktrace"
 #    - TASK="clean lintFlavorDefaultDebug --stacktrace"
     - TASK="clean testFlavorDefaultDebugUnitTest -x lint --stacktrace"
-    - TASK = "sonarqube"
+    - TASK="sonarqube"
 
 script: "./gradlew --no-daemon --parallel $TASK"
