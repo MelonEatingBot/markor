@@ -56,7 +56,21 @@ plugins {
 sonarqube {
   properties {
     property "sonar.projectKey", "MelonEatingBot_markor"
+    property "sonar.coverage.jacoco.xmlReportsPath", "$buildDir/reports/jacoco"
   }
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }
 
 allprojects {
