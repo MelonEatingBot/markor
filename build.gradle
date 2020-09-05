@@ -49,9 +49,10 @@ buildscript {
     }
 }
 
+apply plugin: "com.vanniktech.android.junit.jacoco"
+
 plugins {
   id "org.sonarqube" version "3.0"
-  id "com.vanniktech.android.junit.jacoco"
 }
 
 sonarqube {
