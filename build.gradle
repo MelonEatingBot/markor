@@ -55,7 +55,6 @@ plugins {
 sonarqube {
   properties {
     property "sonar.projectKey", "MelonEatingBot_markor"
-    property "sonar.coverage.jacoco.xmlReportsPath", "$buildDir/reports/jacoco"
   }
 }
 
