@@ -50,6 +50,7 @@ buildscript {
 
 plugins {
   id "org.sonarqube" version "3.0"
+  id 'jacoco'
 }
 
 sonarqube {
@@ -119,4 +120,17 @@ static String getBuildDate() {
     final SimpleDateFormat RFC3339_LIKE = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'")
     RFC3339_LIKE.setTimeZone(TimeZone.getTimeZone("UTC"))
     return RFC3339_LIKE.format(new Date())
+}
+
+test {
+    finalizedBy jacocoTestReport // report is always generated after tests run
+}
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
 }
