@@ -61,7 +61,7 @@ sonarqube {
 }
 
 jacocoTestReport {
-    dependsOn tests
+    dependsOn test
     reports {
         xml.enabled true
     }
