@@ -50,7 +50,6 @@ buildscript {
 
 plugins {
   id "org.sonarqube" version "3.0"
-  id 'jacoco'
 }
 
 sonarqube {
@@ -58,13 +57,6 @@ sonarqube {
     property "sonar.projectKey", "MelonEatingBot_markor"
     property "sonar.coverage.jacoco.xmlReportsPath", "$buildDir/reports/jacoco"
   }
-}
-
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.enabled true
-    }
 }
 
 allprojects {
