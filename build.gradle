@@ -121,16 +121,3 @@ static String getBuildDate() {
     RFC3339_LIKE.setTimeZone(TimeZone.getTimeZone("UTC"))
     return RFC3339_LIKE.format(new Date())
 }
-
-test {
-    finalizedBy jacocoTestReport // report is always generated after tests run
-}
-jacocoTestReport {
-    dependsOn test // tests are required to run before generating the report
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
-}
