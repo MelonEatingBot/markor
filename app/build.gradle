@@ -14,8 +14,6 @@ if (enable_plugin_kotlin) {
     apply plugin: 'kotlin-kapt'
 }
 
-apply plugin: 'jacoco'
-
 rootProject.ext.version_minSdk = 16
 
 // https://github.com/vsch/flexmark-java/releases
@@ -71,10 +69,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-        
-        debug { 
-            testCoverageEnabled = true 
-        } 
     }
 
     configurations.all {
@@ -162,22 +156,4 @@ dependencies {
             annotationProcessor anpro
         }
     }
-}
-
-task jacocoTestReport(type: JacocoReport, dependsOn: ['test']) {
-    reports {
-        xml.enabled = true
-        html.enabled = true
-    }
-
-    def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
-    def debugTree = fileTree(dir: "${buildDir}/intermediates/classes/debug", excludes: fileFilter)
-    def mainSrc = "${project.projectDir}/src/main/java"
-
-    sourceDirectories.from = files([mainSrc])
-    classDirectories.from = files([debugTree])
-    executionData.from = fileTree(dir: "$buildDir")
-}
-jacoco {
-    toolVersion = "0.8.5"
 }
