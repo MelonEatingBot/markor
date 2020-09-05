@@ -14,6 +14,8 @@ if (enable_plugin_kotlin) {
     apply plugin: 'kotlin-kapt'
 }
 
+apply plugin: 'jacoco'
+
 rootProject.ext.version_minSdk = 16
 
 // https://github.com/vsch/flexmark-java/releases
@@ -69,6 +71,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        
+        debug { 
+            testCoverageEnabled = true 
+        } 
     }
 
     configurations.all {
@@ -155,15 +161,6 @@ dependencies {
         } else {
             annotationProcessor anpro
         }
-    }
-}
-
-apply plugin: 'java'
-apply plugin: 'jacoco'
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.enabled true
     }
 }
 
