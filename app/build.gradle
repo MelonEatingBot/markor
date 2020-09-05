@@ -157,3 +157,15 @@ dependencies {
         }
     }
 }
+
+apply plugin: 'jacoco'
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.enabled true
+    }
+}
+
+test {
+    finalizedBy jacocoTestReport
+}
