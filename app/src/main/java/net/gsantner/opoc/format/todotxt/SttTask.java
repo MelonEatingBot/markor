@@ -31,6 +31,7 @@ public class SttTask implements Serializable {
     protected static final int PROP_CREATION_DATE = 23;
     protected static final int PROP_COMPLETION_DATE = 24;
     protected static final int PROP_DUE_DATE = 25;
+    protected static final int PROP_VENUE = 1;
 
     public static final char PRIORITY_NONE = (char) -1;
 
@@ -50,6 +51,10 @@ public class SttTask implements Serializable {
 
     public boolean isDone() {
         return _data.getBool(PROP_DONE, false);
+    }
+    
+    public boolean isSpecificVenue() {
+    	return _data.getBool(PROP_VENUE, false);
     }
 
     public SttTask setDone(boolean value) {
@@ -136,6 +141,15 @@ public class SttTask implements Serializable {
     public SttTask setDescription(String value) {
         _data.setString(PROP_DESCRIPTION, value);
         return this;
+    }
+    
+    public String getVenue() {
+    	return _data.getString(PROP_VENUE, " ");
+    }
+    
+    public SttTask setVenue(String venue) {
+    	_data.setString(PROP_VENUE, " ");
+    	return this;
     }
 
     public MapPropertyBackend<Integer> getData() {
